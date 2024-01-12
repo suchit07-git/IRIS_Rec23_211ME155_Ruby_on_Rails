@@ -1,0 +1,12 @@
+<h1 class="text-4xl font-bold mb-4">User List</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li class="mb-2">
+      <%= user.email %> - <%= user.role %>
+      <%= link_to 'Edit User', edit_admin_user_path(user), class: 'ml-2 bg-blue-500 text-white p-2 rounded' %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Dashboard', admin_root_path, class: 'text-blue-500 mt-4 block' %>

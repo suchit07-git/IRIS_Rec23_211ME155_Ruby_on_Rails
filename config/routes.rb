@@ -14,6 +14,16 @@ Rails.application.routes.draw do
     root 'home#index', as: :authenticated_root
   end
 
+  authenticated :user, lambda { |u| u.admin? } do
+    namespace :admin do
+      resources :users, only: [:index, :edit, :update]
+      root to: 'dashboard#index'
+    end
+  end
+
   root to: redirect('/users/sign_in')
+
+  # get 'admin', to: 'admin#index'
+  # post 'admin/assign_role', to: 'admin#assign_role'
 
 end

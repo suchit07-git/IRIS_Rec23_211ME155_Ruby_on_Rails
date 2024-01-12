@@ -1,0 +1,12 @@
+<h1 class="text-4xl font-bold mb-4">Edit User</h1>
+
+<%= form_for [:admin, @user], class: 'mb-4' do |f| %>
+  <div class="mb-4">
+    <%= f.label :role, class: 'block text-sm font-semibold mb-2' %>
+    <%= f.select :role, User.roles.keys.map { |r| [r.titleize, r] }, { prompt: 'Select Role' }, class: 'bg-gray-100 p-2 rounded' %>
+  </div>
+
+  <%= f.submit 'Update User', class: 'bg-blue-500 text-white p-2 rounded' %>
+<% end %>
+
+<%= link_to 'Back to Users', admin_users_path, class: 'text-blue-500 mt-4 block' %>

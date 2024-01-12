@@ -1,0 +1,11 @@
+<h1>Assign Role</h1>
+
+<%= form_tag admin_assign_role_path, method: :post do %>
+  <%= label_tag 'User:' %>
+  <%= select_tag 'user_id', options_for_select(User.all.map { |u| [u.name, u.id] }) %>
+
+  <%= label_tag 'Role:' %>
+  <%= select_tag 'role', options_for_select(User.roles.keys.map { |r| [r.titleize, r] }) %>
+
+  <%= submit_tag 'Assign Role' %>
+<% end %>
