@@ -8,6 +8,6 @@ class StudentController < ApplicationController
 
   private
   def check_student_role
-    redirect_to root_path unless current_user.student?
+    redirect_to root_path unless current_user.role == 'student'
   end
 end

@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_12_171850) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_13_133025) do
+  create_table "faculties", force: :cascade do |t|
+    t.string "name"
+    t.string "email_id"
+    t.string "dept"
+    t.string "staff_id"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "name"
+    t.string "email_id"
+    t.string "dept"
+    t.string "program"
+    t.string "roll_no"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "cgpa"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

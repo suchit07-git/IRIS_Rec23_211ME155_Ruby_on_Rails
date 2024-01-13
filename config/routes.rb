@@ -21,6 +21,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :student do
+    get 'dashboard', to: 'dashboard#index'
+  end
+
+  namespace :faculty do
+    get 'dashboard', to: 'dashboard#index'
+  end
+
+
   root to: redirect('/users/sign_in')
 
   # get 'admin', to: 'admin#index'
