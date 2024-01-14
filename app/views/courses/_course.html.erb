@@ -1,0 +1,15 @@
+<div id="<%= dom_id course %>">
+ <div class="bg-white p-4 rounded-md">
+    <p class="font-semibold"><%= @course.course_title %></p>
+    <p><strong>Code:</strong> <%= @course.course_code %></p>
+    <p><strong>Instructor:</strong> <%= @course.instructor %></p>
+    <p><strong>Schedule:</strong> <%= @course.schedule %></p>
+    <p><strong>Credits:</strong> <%= @course.credits %></p>
+  
+    <div class="mt-4 flex space-x-4">
+      <%= link_to 'Edit this Course', edit_course_path(@course), class: 'bg-blue-500 text-white p-2 rounded-md' %>
+      <%= link_to 'Back to Courses', faculty_dashboard_path, class: 'bg-gray-500 text-white p-2 rounded-md' %>
+      <%= link_to 'Destroy this Course', @course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'bg-red-500 text-white p-2 rounded-md' %>
+    </div>
+  </div>
+</div>

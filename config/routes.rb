@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :courses
   get 'home/index'
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -23,16 +24,14 @@ Rails.application.routes.draw do
 
   namespace :student do
     get 'dashboard', to: 'dashboard#index'
+    get 'dashboard/update_profile', to: 'dashboard#update_profile'
   end
 
   namespace :faculty do
     get 'dashboard', to: 'dashboard#index'
   end
 
+  resources :students, only: [:update_profile, :edit_profile]
 
   root to: redirect('/users/sign_in')
-
-  # get 'admin', to: 'admin#index'
-  # post 'admin/assign_role', to: 'admin#assign_role'
-
 end

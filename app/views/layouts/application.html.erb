@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <% if flash[:success] %>
+      <div class="bg-green-500 text-white p-2 rounded-md">
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="bg-red-500 text-white p-2 rounded-md">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     <title>CourseRegistration</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>

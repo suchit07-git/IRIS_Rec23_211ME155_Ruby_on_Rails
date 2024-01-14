@@ -3,7 +3,7 @@ class StudentController < ApplicationController
   before_action :check_student_role
 
   def index
-
+    @student = current_user
   end
 
   private
