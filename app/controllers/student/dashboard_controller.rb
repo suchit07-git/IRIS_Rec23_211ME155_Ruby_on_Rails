@@ -8,22 +8,22 @@ class Student::DashboardController < ApplicationController
       @student_profile = StudentProfile.first
     end
   end
-  def edit_profile
-    @student = Student.new
-  end
+  # def edit_profile
+  #   @student = Student.new
+  # end
 
-  def update_profile
-    # @student = Student.new(student_params)
-    @student = current_user.student.build(student_params)
-    if @student.save
-      redirect_to student_dashboard_path, notice: 'Profile updated successfully.'
-    else
-      puts "Validation errors: #{@student.errors.full_messages}"
-      render :edit_profile
-    end
-  end
+  # def update_profile
+  #   # @student = Student.new(student_params)
+  #   @student = current_user.student.build(student_params)
+  #   if @student.save
+  #     redirect_to student_dashboard_path, notice: 'Profile updated successfully.'
+  #   else
+  #     puts "Validation errors: #{@student.errors.full_messages}"
+  #     render :edit_profile
+  #   end
+  # end
 
-  def student_params
-    params.permit(:name, :email_id, :dept, :roll_no, :program, :cgpa, :user_id)
-  end
+  # def student_params
+  #   params.permit(:name, :email_id, :dept, :roll_no, :program, :cgpa, :user_id)
+  # end
 end

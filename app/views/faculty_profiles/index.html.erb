@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Faculty profiles</h1>
+
+<div id="faculty_profiles">
+  <% @faculty_profiles.each do |faculty_profile| %>
+    <%= render faculty_profile %>
+    <p>
+      <%= link_to "Show this faculty profile", faculty_profile, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New faculty profile", new_faculty_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>

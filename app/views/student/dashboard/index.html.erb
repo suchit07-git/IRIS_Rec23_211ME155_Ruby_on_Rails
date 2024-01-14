@@ -8,6 +8,7 @@
       <%= link_to 'Edit Profile', edit_student_profile_path(@student_profile), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
     <% end %>
   </div>
+  <% if StudentProfile.count != 0 %>
   <div class="mb-8">
   <h2 class="text-2xl font-semibold mb-4">Available Courses</h2>
   <table class="min-w-full bg-white border border-gray-300">
@@ -39,4 +40,7 @@
     </tbody>
   </table>
 </div>
+<% else %>
+  <h1 class="text-4xl font-bold mb-4">Please create a profile in order to view the courses</h1>
+<% end %>
 </div>

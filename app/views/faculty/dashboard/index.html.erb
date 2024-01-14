@@ -1,8 +1,15 @@
 <div class="container mx-auto mt-8">
   <h1 class="text-4xl font-bold mb-4">Faculty Dashboard</h1>
   <div>
+     <% if FacultyProfile.count == 0 %>
+      <%= link_to 'Create Profile', new_faculty_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    <% else %>
+      <%= link_to 'Show Profile', @faculty_profile, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+      <%= link_to 'Edit Profile', edit_faculty_profile_path(@faculty_profile), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    <% end %>
     <%= link_to 'Create Course', new_course_path, class: 'bg-green-500 text-white p-2 rounded-md w-full' %>
   </div>
+  <br>
   <div class="mb-8">
   <h2 class="text-2xl font-semibold mb-4">Courses</h2>
   <table class="min-w-full bg-white border border-gray-300">

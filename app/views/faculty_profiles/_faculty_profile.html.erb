@@ -1,0 +1,29 @@
+<div id="<%= dom_id faculty_profile %>">
+ <div class="container mx-auto mt-8">
+  <div class="bg-white p-8 rounded-md shadow-md">
+    <h2 class="text-3xl font-semibold mb-6">Faculty Details</h2>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-gray-700 text-sm">Name:</p>
+        <p class="text-lg font-semibold mb-4"><%= @faculty_profile.name %></p>
+
+        <p class="text-gray-700 text-sm">Email:</p>
+        <p class="text-lg font-semibold mb-4"><%= @faculty_profile.email_id %></p>
+      </div>
+
+      <div>
+        <p class="text-gray-700 text-sm">Department:</p>
+        <p class="text-lg font-semibold mb-4"><%= @faculty_profile.dept %></p>
+
+        <p class="text-gray-700 text-sm">Roll No:</p>
+        <p class="text-lg font-semibold mb-4"><%= @faculty_profile.staff_id %></p>
+      </div>
+    </div>
+    <div class="mt-8">
+      <%= link_to 'Edit Profile', edit_faculty_profile_path(@faculty_profile), class: 'bg-blue-500 text-white p-2 rounded-md mr-4' %>
+      <%= link_to 'Back to Dashboard', faculty_dashboard_path, class: 'bg-gray-500 text-white p-2 rounded-md' %>
+    </div>
+  </div>
+</div>
+</div>

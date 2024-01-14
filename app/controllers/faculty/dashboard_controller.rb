@@ -3,6 +3,10 @@ class Faculty::DashboardController < ApplicationController
   def index
     @courses = Course.all
     @new_course = Course.new
+    @faculy_profiles = StudentProfile.all
+    if FacultyProfile.count != 0
+      @faculty_profile = FacultyProfile.first
+    end
   end
   def create_course
     @new_course = current_faculty.courses.build(course_params)
