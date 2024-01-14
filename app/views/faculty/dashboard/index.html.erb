@@ -27,19 +27,21 @@
     </thead>
     <tbody>
       <% @courses.each do |course| %>
-        <tr>
-          <td class="py-2 px-4 border-b"><%= course.course_title %></td>
-          <td class="py-2 px-4 border-b"><%= course.course_code %></td>
-          <td class="py-2 px-4 border-b"><%= course.instructor %></td>
-          <td class="py-2 px-4 border-b"><%= course.schedule %></td>
-          <td class="py-2 px-4 border-b"><%= course.credits %></td>
-          <td class="py-2 px-4 border-b"><%= course.max_students %></td>
-          <td class="py-2 px-4 border-b">
-            <%= link_to 'Show', course, class: 'text-blue-500 mr-2' %>
-            <%= link_to 'Edit', edit_course_path(course), class: 'text-green-500 mr-2' %>
-            <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500' %>
-          </td>
-        </tr>
+        <% if course.dept == @faculty_profile.dept %>
+          <tr>
+            <td class="py-2 px-4 border-b"><%= course.course_title %></td>
+            <td class="py-2 px-4 border-b"><%= course.course_code %></td>
+            <td class="py-2 px-4 border-b"><%= course.instructor %></td>
+            <td class="py-2 px-4 border-b"><%= course.schedule %></td>
+            <td class="py-2 px-4 border-b"><%= course.credits %></td>
+            <td class="py-2 px-4 border-b"><%= course.max_students %></td>
+            <td class="py-2 px-4 border-b">
+              <%= link_to 'Show', course, class: 'text-blue-500 mr-2' %>
+              <%= link_to 'Edit', edit_course_path(course), class: 'text-green-500 mr-2' %>
+              <%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'text-red-500' %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

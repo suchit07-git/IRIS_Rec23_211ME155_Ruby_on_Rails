@@ -25,17 +25,19 @@
     </thead>
     <tbody>
       <% @courses.each do |course| %>
-        <tr>
-          <td class="py-2 px-4 border-b"><%= course.course_title %></td>
-          <td class="py-2 px-4 border-b"><%= course.course_code %></td>
-          <td class="py-2 px-4 border-b"><%= course.instructor %></td>
-          <td class="py-2 px-4 border-b"><%= course.schedule %></td>
-          <td class="py-2 px-4 border-b"><%= course.credits %></td>
-          <td class="py-2 px-4 border-b"><%= course.max_students %></td>
-          <td class="py-2 px-4 border-b">
-            <%= link_to 'Register', course_registrations_path(course), method: :post, class: 'text-blue-500 mr-2' %>
-          </td>
-        </tr>
+        <% if course.dept == @student_profile.dept %>
+          <tr>
+            <td class="py-2 px-4 border-b"><%= course.course_title %></td>
+            <td class="py-2 px-4 border-b"><%= course.course_code %></td>
+            <td class="py-2 px-4 border-b"><%= course.instructor %></td>
+            <td class="py-2 px-4 border-b"><%= course.schedule %></td>
+            <td class="py-2 px-4 border-b"><%= course.credits %></td>
+            <td class="py-2 px-4 border-b"><%= course.max_students %></td>
+            <td class="py-2 px-4 border-b">
+              <%= link_to 'Register', course_registrations_path(course), method: :post, class: 'text-blue-500 mr-2' %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>

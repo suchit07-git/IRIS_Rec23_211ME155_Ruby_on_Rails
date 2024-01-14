@@ -4,7 +4,7 @@ class Student::DashboardController < ApplicationController
   def index
     @courses = Course.all
     @student_profiles = StudentProfile.all
-    @student_profile = StudentProfile.new
+    @student_profile = StudentProfile.find_by(user_id: current_user.id)
     @user = User.new
   end
   # def edit_profile

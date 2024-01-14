@@ -4,11 +4,14 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+    @faculty_profile = FacultyProfile.find_by(user_id: current_user.id)
+    @course.update(dept: current_user.faculty_profile.dept)
+    @course.update(user_id: current_user.faculty_profile.user_id)
   end
 
   # GET /courses/1 or /courses/1.json
   def show
-    @spots_available = @course.spots_available?
+    # @spots_available = @course.spots_available?
   end
 
 
@@ -19,13 +22,12 @@ class CoursesController < ApplicationController
   end
 
   def register
-    if @course.spots_available?
-      current_student.courses << @course
-      redirect_to student_dashboard_path, notice: 'Successfully registered for the course.'
-    else
-      puts "Hello world!"
-      redirect_to student_dashboard_path, alert: 'No spots available for this course.'
-    end
+    # if @course.spots_available?
+    #   current_student.courses << @course
+    #   redirect_to student_dashboard_path, notice: 'Successfully registered for the course.'
+    # else
+    #   redirect_to student_dashboard_path, alert: 'No spots available for this course.'
+    # end
   end
 
   # GET /courses/1/edit
@@ -34,7 +36,9 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = Course.new(course_params.merge(dept: current_user.faculty_profile.dept, user_id: current_user.id))
+    @course.update(dept: current_user.faculty_profile.dept)
+    @course.update(user_id: current_user.faculty_profile.user_id)
 
     respond_to do |format|
       if @course.save
@@ -78,6 +82,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits, :max_students)
+      params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits, :max_students, :user_id, :dept)
     end
 end

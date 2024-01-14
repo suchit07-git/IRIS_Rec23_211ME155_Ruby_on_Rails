@@ -4,7 +4,7 @@ class Faculty::DashboardController < ApplicationController
     @courses = Course.all
     @new_course = Course.new
     @faculy_profiles = StudentProfile.all
-    @faculty_profile = FacultyProfile.new
+    @faculty_profile = FacultyProfile.find_by(user_id: current_user.id)
     @user = User.new
   end
   def create_course

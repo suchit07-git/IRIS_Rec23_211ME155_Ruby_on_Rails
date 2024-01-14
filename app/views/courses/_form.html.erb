@@ -30,7 +30,8 @@
         <%= f.label :max_students, class: 'block text-sm font-medium text-gray-700' %>
         <%= f.number_field :max_students, class: 'mt-1 p-2 border rounded-md w-full' %>
       </div>
-
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :dept, value: current_user.faculty_profile.dept %>
       <div>
         <%= f.submit 'Create Course', class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
       </div>
