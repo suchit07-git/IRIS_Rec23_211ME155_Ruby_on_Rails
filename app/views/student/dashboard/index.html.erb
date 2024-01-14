@@ -1,3 +1,42 @@
 <div class="container mx-auto mt-8">
   <h1 class="text-4xl font-bold mb-4">Student Dashboard</h1>
+  <div class="mb-8">
+    <% if StudentProfile.count == 0 %>
+      <%= link_to 'Create Profile', new_student_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    <% else %>
+      <%= link_to 'Show Profile', @student_profile, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+      <%= link_to 'Edit Profile', edit_student_profile_path(@student_profile), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    <% end %>
+  </div>
+  <div class="mb-8">
+  <h2 class="text-2xl font-semibold mb-4">Available Courses</h2>
+  <table class="min-w-full bg-white border border-gray-300">
+    <thead>
+      <tr>
+        <th class="py-2 px-4 border-b">Course Title</th>
+        <th class="py-2 px-4 border-b">Course Code</th>
+        <th class="py-2 px-4 border-b">Instructor</th>
+        <th class="py-2 px-4 border-b">Schedule</th>
+        <th class="py-2 px-4 border-b">Credits</th>
+        <th class="py-2 px-4 border-b">Maximum Number of registrations</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td class="py-2 px-4 border-b"><%= course.course_title %></td>
+          <td class="py-2 px-4 border-b"><%= course.course_code %></td>
+          <td class="py-2 px-4 border-b"><%= course.instructor %></td>
+          <td class="py-2 px-4 border-b"><%= course.schedule %></td>
+          <td class="py-2 px-4 border-b"><%= course.credits %></td>
+          <td class="py-2 px-4 border-b"><%= course.max_students %></td>
+          <td class="py-2 px-4 border-b">
+            <%= link_to 'Register', course_registrations_path(course), method: :post, class: 'text-blue-500 mr-2' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 </div>

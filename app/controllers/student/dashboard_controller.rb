@@ -2,6 +2,11 @@ class Student::DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @courses = Course.all
+    @student_profiles = StudentProfile.all
+    if StudentProfile.count != 0
+      @student_profile = StudentProfile.first
+    end
   end
   def edit_profile
     @student = Student.new

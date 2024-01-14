@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_14_050634) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_14_090902) do
   create_table "courses", force: :cascade do |t|
     t.string "course_code"
     t.string "course_title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_050634) do
     t.integer "credits"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "max_students"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -27,6 +28,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_050634) do
     t.string "dept"
     t.string "staff_id"
     t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade do |t|
+    t.integer "student_id", null: false
+    t.integer "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_registrations_on_course_id"
+    t.index ["student_id"], name: "index_registrations_on_student_id"
+  end
+
+  create_table "student_profiles", force: :cascade do |t|
+    t.string "name"
+    t.string "email_id"
+    t.string "dept"
+    t.string "program"
+    t.string "roll_no"
+    t.float "cgpa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,5 +79,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_050634) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "registrations", "courses"
+  add_foreign_key "registrations", "students"
   add_foreign_key "students", "users"
 end

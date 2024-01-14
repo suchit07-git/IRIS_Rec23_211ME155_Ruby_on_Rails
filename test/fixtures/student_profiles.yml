@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email_id: MyString
+  dept: MyString
+  program: MyString
+  roll_no: MyString
+  cgpa: 1.5
+
+two:
+  name: MyString
+  email_id: MyString
+  dept: MyString
+  program: MyString
+  roll_no: MyString
+  cgpa: 1.5

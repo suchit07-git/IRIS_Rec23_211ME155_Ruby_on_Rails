@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :student_profiles
   resources :courses
   get 'home/index'
   devise_for :users
@@ -31,7 +32,14 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
   end
 
-  resources :students, only: [:update_profile, :edit_profile]
+  resources :courses do
+    member do
+      post 'register'
+    end
+  end
+  resources :courses do
+    resources :registrations, only: [:create, :destroy]
+  end
 
   root to: redirect('/users/sign_in')
 end

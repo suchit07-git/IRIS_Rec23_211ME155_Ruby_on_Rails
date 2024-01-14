@@ -7,7 +7,6 @@ class Faculty::DashboardController < ApplicationController
   def create_course
     @new_course = current_faculty.courses.build(course_params)
     if @new_course.save
-      puts "ERRORS: #{@new_course.errors.full_messages}"
       redirect_to faculty_dashboard_path, notice: 'Course created successfully.'
     else
       render :index
@@ -33,6 +32,6 @@ class Faculty::DashboardController < ApplicationController
   private
 
   def course_params
-    params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits)
+    params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits, :max_students)
   end
 end

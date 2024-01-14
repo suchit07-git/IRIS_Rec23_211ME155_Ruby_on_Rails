@@ -1,0 +1,38 @@
+<div id="<%= dom_id student_profile %>">
+ <div class="container mx-auto mt-8">
+  <div class="bg-white p-8 rounded-md shadow-md">
+    <h2 class="text-3xl font-semibold mb-6">Student Details</h2>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-gray-700 text-sm">Name:</p>
+        <p class="text-lg font-semibold mb-4"><%= @student_profile.name %></p>
+
+        <p class="text-gray-700 text-sm">Email:</p>
+        <p class="text-lg font-semibold mb-4"><%= @student_profile.email_id %></p>
+      </div>
+
+      <div>
+        <p class="text-gray-700 text-sm">Department:</p>
+        <p class="text-lg font-semibold mb-4"><%= @student_profile.dept %></p>
+
+        <p class="text-gray-700 text-sm">Roll No:</p>
+        <p class="text-lg font-semibold mb-4"><%= @student_profile.roll_no %></p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <p class="text-gray-700 text-sm">Program:</p>
+      <p class="text-lg font-semibold mb-4"><%= @student_profile.program %></p>
+
+      <p class="text-gray-700 text-sm">CGPA:</p>
+      <p class="text-lg font-semibold mb-4"><%= @student_profile.cgpa %></p>
+    </div>
+
+    <div class="mt-8">
+      <%= link_to 'Edit Profile', edit_student_profile_path(@student_profile), class: 'bg-blue-500 text-white p-2 rounded-md mr-4' %>
+      <%= link_to 'Back to Dashboard', student_dashboard_path, class: 'bg-gray-500 text-white p-2 rounded-md' %>
+    </div>
+  </div>
+</div>
+</div>

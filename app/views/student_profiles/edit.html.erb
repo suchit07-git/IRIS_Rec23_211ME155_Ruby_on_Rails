@@ -1,0 +1,8 @@
+<%= render "form", student_profile: @student_profile %>
+
+<br>
+
+<div class="max-w-md mx-auto p-8 shadow-md">
+  <%= link_to "Show this student profile", @student_profile, class: 'bg-purple-500 text-white p-2 rounded-md w-full' %> 
+  <%= link_to "Back to dashboard", student_dashboard_path, class: 'bg-green-500 text-white p-2 rounded-md w-full' %>
+</div>

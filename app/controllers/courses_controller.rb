@@ -8,11 +8,24 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+    @spots_available = @course.spots_available?
   end
+
 
   # GET /courses/new
   def new
     @course = Course.new
+    
+  end
+
+  def register
+    if @course.spots_available?
+      current_student.courses << @course
+      redirect_to student_dashboard_path, notice: 'Successfully registered for the course.'
+    else
+      puts "Hello world!"
+      redirect_to student_dashboard_path, alert: 'No spots available for this course.'
+    end
   end
 
   # GET /courses/1/edit
@@ -52,7 +65,7 @@ class CoursesController < ApplicationController
     @course.destroy!
 
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
+      format.html { redirect_to faculty_dashboard_path, notice: "Course was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -65,6 +78,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits)
+      params.require(:course).permit(:course_code, :course_title, :instructor, :schedule, :credits, :max_students)
     end
 end
