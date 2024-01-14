@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_14_102054) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_14_122028) do
   create_table "courses", force: :cascade do |t|
     t.string "course_code"
     t.string "course_title"
@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_102054) do
     t.string "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_faculty_profiles_on_user_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -59,6 +61,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_102054) do
     t.float "cgpa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_student_profiles_on_user_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -88,7 +92,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_14_102054) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "faculty_profiles", "users"
   add_foreign_key "registrations", "courses"
   add_foreign_key "registrations", "students"
+  add_foreign_key "student_profiles", "users"
   add_foreign_key "students", "users"
 end

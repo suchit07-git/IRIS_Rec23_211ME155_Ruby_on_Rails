@@ -11,6 +11,6 @@ class User < ApplicationRecord
   def assign_admin_role
     self.role = :admin if email == 'suchitk.211me155@nitk.edu.in'
   end
-  has_one :student
-  accepts_nested_attributes_for :student
+  has_one :student_profile
+  has_one :faculty_profile
 end

@@ -1,14 +1,14 @@
 <div class="container mx-auto mt-8">
   <h1 class="text-4xl font-bold mb-4">Student Dashboard</h1>
   <div class="mb-8">
-    <% if StudentProfile.count == 0 %>
-      <%= link_to 'Create Profile', new_student_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
-    <% else %>
+    <% if StudentProfile.exists?(user_id: current_user.id) %>
       <%= link_to 'Show Profile', @student_profile, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
-      <%= link_to 'Edit Profile', edit_student_profile_path(@student_profile), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+      <%= link_to 'Edit Profile', edit_student_profile_path(current_user.id), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+    <% else %>
+      <%= link_to 'Create Profile', new_student_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
     <% end %>
   </div>
-  <% if StudentProfile.count != 0 %>
+  <% if StudentProfile.exists?(user_id: current_user.id) %>
   <div class="mb-8">
   <h2 class="text-2xl font-semibold mb-4">Available Courses</h2>
   <table class="min-w-full bg-white border border-gray-300">

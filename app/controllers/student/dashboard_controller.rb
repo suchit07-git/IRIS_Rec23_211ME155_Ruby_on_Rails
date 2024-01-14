@@ -4,9 +4,8 @@ class Student::DashboardController < ApplicationController
   def index
     @courses = Course.all
     @student_profiles = StudentProfile.all
-    if StudentProfile.count != 0
-      @student_profile = StudentProfile.first
-    end
+    @student_profile = StudentProfile.new
+    @user = User.new
   end
   # def edit_profile
   #   @student = Student.new

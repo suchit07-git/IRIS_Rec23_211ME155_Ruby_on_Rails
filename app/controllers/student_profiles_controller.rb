@@ -8,6 +8,7 @@ class StudentProfilesController < ApplicationController
 
   # GET /student_profiles/1 or /student_profiles/1.json
   def show
+    @student_profile = StudentProfile.find_by(user_id: current_user.id)
   end
 
   # GET /student_profiles/new
@@ -21,7 +22,8 @@ class StudentProfilesController < ApplicationController
 
   # POST /student_profiles or /student_profiles.json
   def create
-    @student_profile = StudentProfile.new(student_profile_params)
+    @student_profile = StudentProfile.new(student_profile_params.merge(user_id: current_user.id))
+    @user = User.new
 
     respond_to do |format|
       if @student_profile.save
@@ -60,7 +62,7 @@ class StudentProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student_profile
-      @student_profile = StudentProfile.find(params[:id])
+      @student_profile = StudentProfile.find_by(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.

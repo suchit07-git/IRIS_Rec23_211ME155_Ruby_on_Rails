@@ -8,6 +8,7 @@ class FacultyProfilesController < ApplicationController
 
   # GET /faculty_profiles/1 or /faculty_profiles/1.json
   def show
+    @faculty_profile = FacultyProfile.find_by(user_id: current_user.id)
   end
 
   # GET /faculty_profiles/new
@@ -21,7 +22,7 @@ class FacultyProfilesController < ApplicationController
 
   # POST /faculty_profiles or /faculty_profiles.json
   def create
-    @faculty_profile = FacultyProfile.new(faculty_profile_params)
+    @faculty_profile = FacultyProfile.new(faculty_profile_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @faculty_profile.save
@@ -60,7 +61,7 @@ class FacultyProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_faculty_profile
-      @faculty_profile = FacultyProfile.find(params[:id])
+      @faculty_profile = FacultyProfile.find_by(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.

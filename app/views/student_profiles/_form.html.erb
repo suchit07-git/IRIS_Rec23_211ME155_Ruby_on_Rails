@@ -37,6 +37,7 @@
       <%= form.label :cgpa, class: 'block text-sm font-medium text-gray-700' %>
       <%= form.number_field :cgpa, step: 0.1, class: 'mt-1 p-2 border rounded-md w-full' %>
     </div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
     <div>
       <%= form.submit 'Submit', class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
     </div>
