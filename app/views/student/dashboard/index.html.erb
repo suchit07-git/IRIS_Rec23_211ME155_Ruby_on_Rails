@@ -4,6 +4,8 @@
     <% if StudentProfile.exists?(user_id: current_user.id) %>
       <%= link_to 'Show Profile', @student_profile, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
       <%= link_to 'Edit Profile', edit_student_profile_path(current_user.id), class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+      <%= link_to 'Register for courses', new_student_registration_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
+      <%= link_to 'Show registered courses', student_show_courses_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
     <% else %>
       <%= link_to 'Create Profile', new_student_profile_path, class: 'bg-blue-500 text-white p-2 rounded-md w-full' %>
     <% end %>
@@ -20,7 +22,7 @@
         <th class="py-2 px-4 border-b">Schedule</th>
         <th class="py-2 px-4 border-b">Credits</th>
         <th class="py-2 px-4 border-b">Maximum Number of registrations</th>
-        <th class="py-2 px-4 border-b">Actions</th>
+        <th class="py-2 px-4 border-b">Remaining seats</th>
       </tr>
     </thead>
     <tbody>
@@ -33,9 +35,7 @@
             <td class="py-2 px-4 border-b"><%= course.schedule %></td>
             <td class="py-2 px-4 border-b"><%= course.credits %></td>
             <td class="py-2 px-4 border-b"><%= course.max_students %></td>
-            <td class="py-2 px-4 border-b">
-              <%= link_to 'Register', course_registrations_path(course), method: :post, class: 'text-blue-500 mr-2' %>
-            </td>
+            <td class="py-2 px-4 border-b"><%= course.max_students - @StudentRegistration.where(course_code: course.course_code).count %></td>
           </tr>
         <% end %>
       <% end %>

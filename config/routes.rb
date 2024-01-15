@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :student_registrations
   resources :faculty_profiles
   resources :student_profiles
   resources :courses
@@ -27,20 +28,17 @@ Rails.application.routes.draw do
   namespace :student do
     get 'dashboard', to: 'dashboard#index'
     get 'dashboard/update_profile', to: 'dashboard#update_profile'
+    get 'dashboard/course_registration', to: 'dashboard#course_registration', as: 'course_registration'
+    get 'dashboard/show_courses', to: 'dashboard#show_courses', as: 'show_courses'
+    post 'students/dashboard/course_registration/create_course_registration', to: 'students#dashboard#course_registration#create_course_registration', as: 'create_course_registration'
   end
 
   namespace :faculty do
     get 'dashboard', to: 'dashboard#index'
   end
 
-  resources :courses do
-    member do
-      post 'register'
-    end
-  end
-  resources :courses do
-    resources :registrations, only: [:create, :destroy]
-  end
+  resources :courses, only: [:new, :create]
+  resources :registrations, only: [:new, :destroy]
 
   root to: redirect('/users/sign_in')
 end

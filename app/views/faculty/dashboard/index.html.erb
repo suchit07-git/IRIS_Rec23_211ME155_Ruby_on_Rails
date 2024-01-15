@@ -27,7 +27,7 @@
     </thead>
     <tbody>
       <% @courses.each do |course| %>
-        <% if course.dept == @faculty_profile.dept %>
+        <% if course.dept == @faculty_profile.dept && course.user_id == @faculty_profile.user_id %>
           <tr>
             <td class="py-2 px-4 border-b"><%= course.course_title %></td>
             <td class="py-2 px-4 border-b"><%= course.course_code %></td>

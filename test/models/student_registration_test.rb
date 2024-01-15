@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RegistrationsControllerTest < ActionDispatch::IntegrationTest
+class StudentRegistrationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

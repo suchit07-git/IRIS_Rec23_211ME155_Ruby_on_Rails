@@ -3,6 +3,6 @@ class Student < ApplicationRecord
   validates :email_id, uniqueness: false
   belongs_to :user
   has_many :registrations
-  has_many :courses, through: :registrations
+  has_many :courses
   has_one :student_profile
 end

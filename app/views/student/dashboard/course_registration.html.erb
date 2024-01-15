@@ -1,0 +1,11 @@
+<h2>Select Courses</h2>
+<%= form_with(url: student_create_course_registration_path, method: :post) do |form| %>
+  <% @available_courses.each do |course| %>
+    <div>
+      <%= check_box_tag 'course_ids[]', course.id %>
+      <%= label_tag "course_ids_#{course.course_code}", course.course_title %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Register Selected Courses', class: 'btn btn-primary' %>
+<% end %>

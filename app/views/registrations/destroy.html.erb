@@ -1,7 +1,0 @@
-<h1>Unregister from Course</h1>
-
-<%= form_with(url: course_registration_path(@course, @registration), method: :delete) do |form| %>
-  <%= form.submit 'Unregister from Course' %>
-<% end %>
-
-<%= link_to 'Back to Dashboard', student_dashboard_path %>

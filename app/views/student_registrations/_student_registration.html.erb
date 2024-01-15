@@ -1,0 +1,18 @@
+<div id="<%= dom_id student_registration %>">
+  <div class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded shadow-md w-96">
+    <h1 class="text-3xl font-bold mb-6 text-center">Course Registration Details</h1>
+
+    <div class="mb-4">
+      <p class="text-lg font-semibold mb-2">Student Name:</p>
+      <p class="text-gray-800"><%= student_registration.student_name %></p>
+    </div>
+
+    <div class="mb-4">
+      <p class="text-lg font-semibold mb-2">Course Code:</p>
+      <p class="text-gray-800"><%= student_registration.course_code %></p>
+    </div>
+    <%= link_to "Back to dashboard", student_dashboard_path, class: 'bg-green-500 text-white p-2 rounded-md w-full' %>
+    <%= link_to "Unregister from course", @student_registration, data: {"turbo-method": :delete }, class: 'bg-green-500 text-white p-2 rounded-md w-full' %>
+  </div>
+</div>

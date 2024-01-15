@@ -18,16 +18,9 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    
   end
 
   def register
-    # if @course.spots_available?
-    #   current_student.courses << @course
-    #   redirect_to student_dashboard_path, notice: 'Successfully registered for the course.'
-    # else
-    #   redirect_to student_dashboard_path, alert: 'No spots available for this course.'
-    # end
   end
 
   # GET /courses/1/edit
@@ -37,8 +30,8 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params.merge(dept: current_user.faculty_profile.dept, user_id: current_user.id))
-    @course.update(dept: current_user.faculty_profile.dept)
-    @course.update(user_id: current_user.faculty_profile.user_id)
+    # @course.update(dept: current_user.faculty_profile.dept)
+    # @course.update(user_id: current_user.faculty_profile.user_id)
 
     respond_to do |format|
       if @course.save

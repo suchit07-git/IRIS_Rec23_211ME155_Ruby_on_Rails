@@ -1,0 +1,19 @@
+<div class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded shadow-md w-96">
+    <h1 class="text-3xl font-bold mb-6 text-center">Registered Courses</h1>
+
+    <% if @student_registration.courses.any? %>
+      <ul class="list-disc list-inside mb-4">
+        <% @student_registration.courses.each do |course| %>
+          <li class="text-gray-800"><%= course.course_code %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-gray-800">You haven't registered for any courses yet.</p>
+    <% end %>
+
+    <div class="flex items-center justify-center">
+      <%= link_to 'Back to Dashboard', student_dashboard_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline-blue active:bg-blue-800" %>
+    </div>
+  </div>
+</div>
