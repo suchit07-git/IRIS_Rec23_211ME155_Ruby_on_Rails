@@ -43,3 +43,8 @@ After installing the gems, run `rails s` to start a server at port 3000 or `rail
 - Improving overall UI
 # Demo video
 [Click here](https://drive.google.com/file/d/1aBrA_m1eWyMS31rH3g_Nuyu2WUPS7Rn4/view?usp=drive_link)
+# Screenshots
+![Login page](https://github.com/suchit07-git/IRIS_Rec23_211ME155_Ruby_on_Rails/assets/78025461/fd2894bf-8350-4a7e-9d94-0a6f39833bf2)
+![Sign up page](https://github.com/suchit07-git/IRIS_Rec23_211ME155_Ruby_on_Rails/assets/78025461/9dc6989f-3768-44ed-b769-e5390f729109)
+![student dashboard](https://github.com/suchit07-git/IRIS_Rec23_211ME155_Ruby_on_Rails/assets/78025461/5b7fd5ed-0b88-42ec-a077-ab7e602cc4a5)
+![faculty dashboard](https://github.com/suchit07-git/IRIS_Rec23_211ME155_Ruby_on_Rails/assets/78025461/69c85f3b-590d-41bd-adb6-c91367929925)
