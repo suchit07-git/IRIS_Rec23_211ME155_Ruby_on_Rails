@@ -5,9 +5,11 @@ class Student::DashboardController < ApplicationController
     @courses = Course.all
     @student_profiles = StudentProfile.all
     @student_profile = StudentProfile.find_by(user_id: current_user.id)
-    @available_courses = Course.find_by(dept: current_user.student_profile.dept)
-    @StudentRegistration = StudentRegistration.where(student_name: current_user.student_profile.name)
-    @registered_courses = @StudentRegistration.where(student_name: current_user.student_profile.name)
+    if current_user.student_profile
+      @available_courses = Course.find_by(dept: current_user.student_profile.dept)
+      @StudentRegistration = StudentRegistration.where(student_name: current_user.student_profile.name)
+      @registered_courses = @StudentRegistration.where(student_name: current_user.student_profile.name)
+    end
     @user = User.new
   end
 

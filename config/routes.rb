@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: [:new, :create]
-  resources :registrations, only: [:new, :destroy]
+  # resources :registrations, only: [:new, :destroy]
 
   root to: redirect('/users/sign_in')
 end
